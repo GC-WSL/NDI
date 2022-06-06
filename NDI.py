@@ -14,7 +14,7 @@ class Build_NDI():
         self.NDI = [[] for i in range(self.classes)]
         self.NDI_scores = [[] for i in range(self.classes)]
     @torch.no_grad()
-    def Update_NDI(self, features, obj_scores, labels_per_im, tau=0.01):
+    def Update_NDI(self, features, obj_scores, labels_per_im):
         labels = labels_per_im[0].nonzero()
         value, idxes = torch.max(obj_scores,dim=1)
         flag = torch.ones_like(idxes).cuda()
